@@ -9,6 +9,12 @@ defmodule ExMonWeb.Router do
     pipe_through :api
   end
 
+  scope "/", ExMonWeb do
+    pipe_through :api
+
+    get "/", WelcomeController, :index
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
