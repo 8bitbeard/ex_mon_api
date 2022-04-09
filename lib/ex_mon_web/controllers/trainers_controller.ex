@@ -1,5 +1,7 @@
 defmodule ExMonWeb.TrainersController do
   use ExMonWeb, :controller
+
+  action_fallback ExMonWeb.FallbackController
   
   def create(conn, params) do
     params
@@ -12,4 +14,6 @@ defmodule ExMonWeb.TrainersController do
     |> put_status(:created)
     |> render("create.json", trainer: trainer)
   end
+
+  defp handle_response({:error, _changeset} = error, _conn), do: error
 end
