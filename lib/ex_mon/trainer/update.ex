@@ -1,17 +1,17 @@
 defmodule ExMon.Trainer.Update do
   alias Ecto.UUID
-  alias ExMon.{Repo, Trainer}
+  alias ExMon.{Error, Repo, Trainer}
 
   def call(%{"id" => uuid} = params) do
     case UUID.cast(uuid) do
-      :error -> {:error, "Invalid ID format!"}
+      :error -> {:error, Error.build_invalid_id_format()}
       {:ok, _uuid} -> update(params)
     end
   end
 
   defp update(%{"id" => uuid} = params) do
     case fetch_trainer(uuid) do
-      nil -> {:error, "Trainer not found!"}
+      nil -> {:error, Error.build_trainer_not_found()}
       trainer -> update_trainer(trainer, params)
     end
   end
