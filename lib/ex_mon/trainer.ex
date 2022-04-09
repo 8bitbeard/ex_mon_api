@@ -12,6 +12,12 @@ defmodule ExMon.Trainer do
     timestamps()
   end
 
+  def build(params) do
+    params
+    |> changeset()
+    |> apply_action(:insert)
+  end
+
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required_params)
