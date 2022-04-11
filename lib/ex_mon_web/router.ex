@@ -10,6 +10,7 @@ defmodule ExMonWeb.Router do
 
     resources "/trainers", TrainersController, only: [:create, :show, :delete, :update]
 
+    post "/pokemons", TrainerPokemonsController,:create
     get "/pokemons/:name", PokemonsController, :show
   end
 
