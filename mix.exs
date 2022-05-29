@@ -46,6 +46,7 @@ defmodule ExMon.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:argon2_elixir, "~> 3.0"},
       {:tesla, "~> 1.4"},
+      {:guardian, "~> 2.0"}
     ]
   end
 
